@@ -1,4 +1,4 @@
-# 53 Rules Overview
+# 54 Rules Overview
 
 ## AddCoversClassAttributeRector
 
@@ -983,6 +983,30 @@ Change data provider methods to static
 +    public static function provideData()
      {
          yield [1];
+     }
+ }
+```
+
+<br>
+
+## TestAnnotationToAttributeRector
+
+Change `@test` annotation to #[Test] attribute
+
+- class: [`Rector\PHPUnit\AnnotationsToAttributes\Rector\ClassMethod\TestAnnotationToAttributeRector`](../rules/AnnotationsToAttributes/Rector/ClassMethod/TestAnnotationToAttributeRector.php)
+
+```diff
+ use PHPUnit\Framework\TestCase;
++use PHPUnit\Framework\Attributes\Test;
+
+ final class SomeFixture extends TestCase
+ {
+-    /**
+-     * @test
+-     */
++    #[Test]
+     public function initialBalanceShouldBe0(): void
+     {
      }
  }
 ```
